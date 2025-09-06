@@ -9,17 +9,22 @@ import { type personalInfoType as personInfo ,
 type AllInfoProps = {
     personalInfo : personInfo;
     setPersonalInfo: (prev: personInfo) => void;
-    educationInfo: educationType;
-    setEducationInfo: (prev : educationType) => void;
-    workInfo: workType;
-    setWorkInfo: (prev: workType) => void;
+    educationInfo: Array<educationType>;
+    setEducationInfo: (prev : educationType[]) => void;
+    workInfo: workType[];
+    setWorkInfo: (prev: workType[]) => void;
 }
 
 export default function AllInfo({personalInfo , setPersonalInfo
-    ,educationInfo ,setEducationInfo , workInfo , setWorkInfo
+    // ,educationInfo ,setEducationInfo , workInfo , setWorkInfo
 } : AllInfoProps) {
     return (
         <>
+        <PersonalInfo 
+            personalInfo={personalInfo} 
+            setPersonalInfo={setPersonalInfo}
+        /> 
+        
         </>
     )
 }

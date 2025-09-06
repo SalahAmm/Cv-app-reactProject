@@ -13,7 +13,7 @@ export type educationInfoType = {
   schoolName: string;
   degree: string;
   startDate: string;
-  endDate: string
+  endDate: string;
 }
 
 export type workInfoType = {
@@ -32,8 +32,19 @@ function App() {
     email:'',
     phone:'',
   });
-  const [educationInfo , setEducationInfo] = useState<educationInfoType[]>([]);
-  const [workInfo , setWorkInfo] = useState<workInfoType[]>([]);
+  const [educationInfo , setEducationInfo] = useState<educationInfoType[]>([{
+    schoolName:'',
+    degree:'',
+    startDate:'',
+    endDate:'',
+  },]);
+  const [workInfo , setWorkInfo] = useState<workInfoType[]>([{
+    company:'',
+    position:'',
+    responsibility:'',
+    startDate:'',
+    endDate:''
+  },]);
 
    
 
