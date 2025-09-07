@@ -5,10 +5,11 @@ import { type personalInfoType as personInfo ,
         type educationInfoType as educationType,
         type workInfoType as workType
 } from "../App.tsx"
+import { type Dispatch , type SetStateAction } from "react"
 
 type AllInfoProps = {
     personalInfo : personInfo;
-    setPersonalInfo: (prev: personInfo) => void;
+    setPersonalInfo: Dispatch<SetStateAction<personInfo>> 
     educationInfo: Array<educationType>;
     setEducationInfo: (prev : educationType[]) => void;
     workInfo: workType[];
