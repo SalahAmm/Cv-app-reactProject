@@ -20,10 +20,12 @@ export default function AllInfo({personalInfo , setPersonalInfo
 } : AllInfoProps) {
     return (
         <>
+        <div className="w-1/2 border bg-gray-50">
         <PersonalInfo 
             personalInfo={personalInfo} 
             setPersonalInfo={setPersonalInfo}
         /> 
+        </div>
         
         </>
     )

@@ -50,16 +50,22 @@ function App() {
 
   return (
     <>
-  <AllInfo  
-    personalInfo={personalInfo} setPersonalInfo={setPersonalInfo}
-    educationInfo={educationInfo} setEducationInfo={setEducationInfo}
-    workInfo={workInfo} setWorkInfo={setWorkInfo}
-    
+    {/* {Has to scale it to full site 
+      // how to seperate it in the middle 
+      // how make each of them deffrent background with a line in the middle for ease to stle } */}
+    <div className="h-screen flex gap-4 p-1 box-border" >
+      <AllInfo  
+        personalInfo={personalInfo} setPersonalInfo={setPersonalInfo}
+        educationInfo={educationInfo} setEducationInfo={setEducationInfo}
+        workInfo={workInfo} setWorkInfo={setWorkInfo}
+        
 
-  />
-  <CvPreview />
+      />
+      <CvPreview />
 
+    </div>
   </>
+
   )
 }
 
