@@ -49,25 +49,34 @@ function App() {
    
 
   return (
-    <>
-    {/* {
-} */}
-    <div className="h-screen flex gap-4 p-1 box-border" >
-      <AllInfo  
-        personalInfo={personalInfo} setPersonalInfo={setPersonalInfo}
-        educationInfo={educationInfo} setEducationInfo={setEducationInfo}
-        workInfo={workInfo} setWorkInfo={setWorkInfo}
-        
-
-      />
-      <CvPreview  
-      personalInfo={personalInfo} 
-      />
-
+    <div className="min-h-screen bg-gray-50">
+      <header className="bg-blue-600 text-white py-6 mb-8">
+        <div className="container mx-auto px-4">
+          <h1 className="text-3xl font-bold text-center">CV Builder</h1>
+          <p className="text-center mt-2">Create your professional CV in minutes</p>
+        </div>
+      </header>
+      <div className="container mx-auto px-4 flex flex-col lg:flex-row gap-8 pb-12">
+        <div className="lg:w-1/2">
+          <AllInfo  
+            personalInfo={personalInfo}
+            setPersonalInfo={setPersonalInfo}
+            educationInfo={educationInfo}
+            setEducationInfo={setEducationInfo}
+            workInfo={workInfo}
+            setWorkInfo={setWorkInfo}
+          />
+        </div>
+        <div className="lg:w-1/2">
+          <CvPreview  
+            personalInfo={personalInfo} 
+            educationInfo={educationInfo}
+            workInfo={workInfo}
+          />
+        </div>
+      </div>
     </div>
-  </>
-
-  )
+  );
 }
 
 export default App

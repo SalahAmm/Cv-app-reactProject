@@ -14,28 +14,11 @@ export default function PersonalInfo({
   setPersonalInfo,
 }: personalInfoProps) {
 
-  const [savedInfo , setSavedInfo] = useState<personalInfoType>({name:'', email:'' , phone:'',});
-  const [modes , setModes] = useState<boolean>(false);
+  const [modes, setModes] = useState<boolean>(false);
 
-
-
-   
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement> ) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const formData = new FormData(e.currentTarget);
-    const formValues = {
-      name: formData.get('name') as string,
-      email: formData.get('email')as string,
-      phone: formData.get('phone')as string,
-    };
-    setSavedInfo(formValues);
-
-    console.log(savedInfo);
     setModes(prev => !prev);
-    console.log(modes)
-
   }
 
 
@@ -57,43 +40,75 @@ export default function PersonalInfo({
   return (
     <>
       <div>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 border-2 border-gray-300 shadow  p-4 m-3  rounded bg-white">
-          <div className="flex flex-col p-2 gap-1">
-            <label htmlFor="name">Personal Name</label>
-            <input 
-              id="name" 
-              type="text" 
-              name="name" 
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-4 border-2 border-gray-200 shadow-lg  p-6 m-4  rounded-lg bg-white"
+        >
+          <div className="flex flex-col p-2 gap-2">
+            <label htmlFor="name" className="font-semibold text-gray-700">
+              Personal Name
+            </label>
+            <input
+              id="name"
+              type="text"
+              name="name"
               readOnly={modes}
-              value={personalInfo.name} 
+              value={personalInfo.name}
               onChange={handleChange}
-              className={`border-2 focus:outline-gray-500 border-gray-300 rounded p-1 ${modes && `bg-gray-300 text-gray-500`}`} />
+              className={`border-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300 rounded-md p-2 ${
+                modes && `bg-gray-200 text-gray-500`
+              }`}
+            />
           </div>
-          <div className="flex flex-col p-2 gap-1">
-            <label htmlFor="email">Email Address</label>
-            <input 
+          <div className="flex flex-col p-2 gap-2">
+            <label htmlFor="email" className="font-semibold text-gray-700">
+              Email Address
+            </label>
+            <input
               id="email"
-              type="email" 
-              name="email" 
+              type="email"
+              name="email"
               readOnly={modes}
-              value={personalInfo.email} 
+              value={personalInfo.email}
               onChange={handleChange}
-              className={`border-2 focus:outline-gray-500 border-gray-300 rounded p-1 ${modes && `bg-gray-300 text-gray-500`}`}/>
+              required
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              title="Please enter a valid email address"
+              className={`border-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border-gray-300 rounded-md p-2 ${
+                modes && `bg-gray-200 text-gray-500`
+              }`}
+            />
           </div>
-          <div className="flex flex-col p-2 gap-1">
-            <label htmlFor="phone">Phone Number</label>
-            <input 
-            id="phone" 
-            type="text" 
-            name="phone"
-            readOnly={modes}
-            value={personalInfo.phone} 
-            onChange={handleChange}
-            className={`border-2 border-gray-300 rounded focus:outline-gray-500 p-1 ${modes && `bg-gray-300 text-gray-500`}`}/>
+          <div className="flex flex-col p-2 gap-2">
+            <label htmlFor="phone" className="font-semibold text-gray-700">
+              Phone Number
+            </label>
+            <input
+              id="phone"
+              type="text"
+              name="phone"
+              readOnly={modes}
+              value={personalInfo.phone}
+              onChange={handleChange}
+              pattern="[0-9]{10}"
+              title="Please enter a valid 10-digit phone number"
+              required
+              className={`border-2 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 p-2 ${
+                modes && `bg-gray-200 text-gray-500`
+              }`}
+            />
           </div>
-            {!modes && <button className="border bg-black text-white p-1 w-2/5 rounded self-center">Save Information</button>}
-            
-            {modes && <button className="border bg-black text-white p-1 w-2/5 rounded self-center">Editing Mode</button>}
+          {!modes && (
+            <button className="border bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg self-center transition duration-300">
+              Save Information
+            </button>
+          )}
+
+          {modes && (
+            <button className="border bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg self-center transition duration-300">
+              Editing Mode
+            </button>
+          )}
         </form>
       </div>
     </>

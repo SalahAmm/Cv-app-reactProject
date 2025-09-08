@@ -11,13 +11,14 @@ type AllInfoProps = {
     personalInfo : personInfo;
     setPersonalInfo: Dispatch<SetStateAction<personInfo>> 
     educationInfo: Array<educationType>;
-    setEducationInfo: (prev : educationType[]) => void;
+    setEducationInfo: Dispatch<SetStateAction<educationType[]>>
     workInfo: workType[];
-    setWorkInfo: (prev: workType[]) => void;
+    setWorkInfo: Dispatch<SetStateAction<workType[]>> 
 }
 
 export default function AllInfo({personalInfo , setPersonalInfo
-    // ,educationInfo ,setEducationInfo , workInfo , setWorkInfo
+    ,educationInfo ,setEducationInfo  
+    , workInfo , setWorkInfo
 } : AllInfoProps) {
     return (
         <>
@@ -26,6 +27,9 @@ export default function AllInfo({personalInfo , setPersonalInfo
             personalInfo={personalInfo} 
             setPersonalInfo={setPersonalInfo}
         /> 
+        <EducationInfo educationInfo={educationInfo} setEducationInfo={setEducationInfo}/>
+        <WorkInfo  workInfo={workInfo} setWorkInfo={setWorkInfo}/>
+
         </div>
         
         </>
